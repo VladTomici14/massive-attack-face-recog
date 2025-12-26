@@ -3,8 +3,12 @@ import cv2
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
+import argparse
 
-
+parser = argparse.ArgumentParser(description='Face Detection with MediaPipe')
+parser.add_argument('--input', type=str, default="0", help='Path to input video file. Leave blank to use webcam')
+parser.add_argument('--output', type=str, default="output.mp4", help='Path to output video file')
+args = parser.parse_args()
 
 def generateRandomString():
     letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
