@@ -4,6 +4,9 @@ import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import argparse
+import os
+
+MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "detector.tflite")
 
 
 def generateRandomString():
@@ -56,7 +59,7 @@ def procesFrame(image, detector):
 
 if __name__ == "__main__":
     # ----- setup MediaPipe Face Detection -----
-    base_options = python.BaseOptions(model_asset_path='detector.tflite')
+    base_options = python.BaseOptions(model_asset_path=MODEL_PATH)
     options = vision.FaceDetectorOptions(base_options=base_options)
     detector = vision.FaceDetector.create_from_options(options)
 
